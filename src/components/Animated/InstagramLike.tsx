@@ -4,6 +4,7 @@ import { Gesture, GestureDetector } from "react-native-gesture-handler"
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
+  withDelay,
   withSpring,
 } from "react-native-reanimated"
 import { AntDesign } from "@expo/vector-icons"
@@ -16,7 +17,7 @@ const InstagramLike = () => {
     setLiked(!liked)
     scale.value = withSpring(1, undefined, (isFinished) => {
       if (isFinished) {
-        scale.value = withSpring(0)
+        scale.value = withDelay(500, withSpring(0))
       }
     })
   }
