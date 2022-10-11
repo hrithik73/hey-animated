@@ -17,6 +17,7 @@ const StackNavigator = () => {
       {components.map((item) => {
         return (
           <Stack.Screen
+            key={item.screenName}
             name={item.screenName}
             component={item.screenComponent}
           />

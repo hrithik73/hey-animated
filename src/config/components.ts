@@ -1,4 +1,4 @@
-import InstagramLike from "../components/InstagramLike"
+import InstagramLike from "../components/Animated/InstagramLike"
 
 const components = [
   { id: 1, screenName: "instagram-like", screenComponent: InstagramLike },
