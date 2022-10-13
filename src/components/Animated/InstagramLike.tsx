@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { View, StyleSheet, Text, Pressable, Button } from "react-native"
-import { Gesture, GestureDetector } from "react-native-gesture-handler"
+import {
+  Gesture,
+  GestureDetector,
+  GestureHandlerRootView,
+} from "react-native-gesture-handler"
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -28,6 +32,7 @@ const InstagramLike = () => {
     .numberOfTaps(2)
     .onEnd((_event, success) => {
       if (success) {
+        console.log("Double tapped")
         animateOnTap()
       }
     })
@@ -43,24 +48,26 @@ const InstagramLike = () => {
   })
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Double Tap the post to see magic</Text>
-      <GestureDetector gesture={doubleTap}>
-        <View style={styles.post}>
-          <Text style={styles.text}>
-            You Liked? {"  "}
-            {liked ? (
-              <AntDesign name="heart" size={20} color="red" />
-            ) : (
-              <AntDesign name="hearto" size={20} />
-            )}
-          </Text>
-          <Animated.View style={[styles.heart, animatedStyle]}>
-            <AntDesign name="heart" color="gray" size={100} />
-          </Animated.View>
-        </View>
-      </GestureDetector>
-    </View>
+    <GestureHandlerRootView>
+      <View style={styles.container}>
+        <Text style={styles.heading}>Double Tap the post to see magic</Text>
+        <GestureDetector gesture={doubleTap}>
+          <View style={styles.post}>
+            <Text style={styles.text}>
+              You Liked? {"  "}
+              {liked ? (
+                <AntDesign name="heart" size={20} color="red" />
+              ) : (
+                <AntDesign name="hearto" size={20} />
+              )}
+            </Text>
+            <Animated.View style={[styles.heart, animatedStyle]}>
+              <AntDesign name="heart" color="gray" size={100} />
+            </Animated.View>
+          </View>
+        </GestureDetector>
+      </View>
+    </GestureHandlerRootView>
   )
 }
 

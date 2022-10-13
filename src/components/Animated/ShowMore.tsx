@@ -22,7 +22,7 @@ const ShowMore = () => {
     //   ? withSpring(400) setShowMore(false)
     //   : withSpring(100) setShowMore(true)
     if (showMore) {
-      height.value = withSpring(200, EasingNode.back)
+      height.value = withSpring(200)
       setShowMore(false)
     } else {
       height.value = withSpring(100)
